@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "target": "ES2017", // To which version to compile,
+        "outDir": "build", // Specify that output will be in build folder
+        "module": "commonjs",
+        "strictNullChecks": true
+    }, // How to compile
+    "inluce": ["src/**/*"] // Compile all files in src folder
+}
