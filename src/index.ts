@@ -129,10 +129,10 @@ const handleLogIn = (user: User) => {
    }
 }
 
-handleLogIn({
-    name: "Anna",
-    email: "anna@gmail.com",
-})
+// handleLogIn({
+//     name: "Anna",
+//     email: "anna@gmail.com",
+// })
 
 
 //Optional chaining
@@ -140,3 +140,56 @@ function getFirstAddress (contact: Contact) {
     return contact.addresses?.[0]
 }
 
+//Implement interface
+class MyContact implements Contact {
+    name: string;
+    phoneNumber: string;
+    email: string;
+    company: string;
+
+    constructor (name, phoneNumber, email, company) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.company = company;
+    }
+}
+
+interface ContactApdater {
+    getContact: () => Contact[];
+}
+
+class MyContactAdapter implements ContactApdater {
+    getContact() {
+        const contacts: Contact[] = [{
+            name: "A",
+            phoneNumber: "123", 
+            email: "123@gmail.com",
+            company: "123"
+        }, {
+            name: "B",
+            phoneNumber: "456", 
+            email: "456@gmail.com",
+            company: "456"
+        }]
+
+        return contacts;
+    }
+}
+
+const myAdapter = new MyContactAdapter()
+class ContactApp {
+    adapter: ContactApdater
+    constructor (adapter: ContactApdater) {
+        this.adapter = adapter;
+    }
+
+    render() {
+        const contacts: Contact[] = this.adapter.getContact()
+
+        console.table(contacts)
+    }
+}
+
+const app = new ContactApp(myAdapter);
+app.render()
