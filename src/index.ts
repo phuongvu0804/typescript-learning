@@ -81,6 +81,37 @@ const contact3: Contact = {
 
 contacts.push(newContact)
 
+//Extending interfaces
+interface Message {
+    type: string,
+    content: string
+}
+
+interface Button {
+    onClick: () => void,
+    label?: string
+}
+
+interface IconButton extends Button {
+    iconButton: string
+}
+
+interface NotiMsg extends Message, IconButton{
+    color: string,
+    icon: string
+}
+
+const successMsg: NotiMsg = {
+    color: "green",
+    type: "success",
+    icon: "<i class='success'/>",
+    iconButton: "<i class='closing/>",
+    content: "You have saved successfully!",
+    onClick: () => alert(successMsg.content)
+}
+
+console.log(successMsg)
+
 //Optional properties
 interface User {
     name: string;
@@ -108,3 +139,4 @@ handleLogIn({
 function getFirstAddress (contact: Contact) {
     return contact.addresses?.[0]
 }
+
