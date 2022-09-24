@@ -39,11 +39,16 @@ const anotherVar: null = null;
 const bigNum: bigint = BigInt(10);
 
 //Interface
+interface Address {
+    city: string;
+    district?: string;
+}
 interface Contact {
     name: string;
     phoneNumber: string;
     email: string;
     company: string;
+    addresses?: Address[]
 }
 
 const contacts: Contact[] = [];
@@ -53,6 +58,25 @@ const newContact: Contact = {
     phoneNumber: "046555333",
     email: "abc@gmail.com",
     company: "IKEA"
+}
+
+const contact2: Contact = {
+    name: "John",
+    phoneNumber: "0123456789",
+    email: "john@gmail.com",
+    company: "HK",
+    addresses: [ {
+        city: "Espoo",
+        district: "Viherlaakso"
+    }]
+}
+
+const contact3: Contact = {
+    name: "Mari",
+    phoneNumber: "046555333",
+    email: "mari@gmail.com",
+    company: "HK",
+    addresses: [{ city: "Vantaa"}, {city: "Lappeenranta"}]
 }
 
 contacts.push(newContact)
@@ -78,3 +102,9 @@ handleLogIn({
     name: "Anna",
     email: "anna@gmail.com",
 })
+
+
+//Optional chaining
+function getFirstAddress (contact: Contact) {
+    return contact.addresses?.[0]
+}
