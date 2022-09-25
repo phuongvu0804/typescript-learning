@@ -203,18 +203,18 @@ interface Employee {
 }
 
 interface Employee {
-    isValidRetirement: () => boolean;
+    isValidRetirement?: () => boolean;
 }
 
-const employee1: Employee = {
-    name: "A",
-    age: 55,
-    isNew: false,
-    isValidRetirement: function () {
-        if (age >= 55) return true;
-        return false;
-    }
-}
+// const employee1: Employee = {
+//     name: "A",
+//     age: 55,
+//     isNew: false,
+//     isValidRetirement: function () {
+//         if (age >= 55) return true;
+//         return false;
+//     }
+// }
 
 //Type inference
 function foo () {
@@ -248,3 +248,42 @@ const userInfo = {
 }
 
 userList.push(userInfo)
+
+//Enums
+enum GenderType { // String enum
+    Male = "Male",
+    Female = "Female",
+    Other = "Other",
+}
+
+interface Employee {
+    gender: GenderType
+}
+
+const employee2: Employee = {
+    name: "Employee 1",
+    age: 28,
+    isNew: false,
+    gender: GenderType.Male
+}
+
+enum HouseType { // Numeric enum
+    Yksiö,
+    Kaksio,
+    Ravitalo,
+    Omatalo
+}
+
+interface House {
+    seller: string;
+    saler: string;
+    area: string;
+    type: HouseType
+}
+
+const house1: House = {
+    seller: "Tapio",
+    saler: "Mari",
+    area: "50m2",
+    type: HouseType.Kaksio
+}
