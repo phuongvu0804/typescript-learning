@@ -230,3 +230,21 @@ function foo () {
 }
 
 console.log(foo())
+
+//Duck typing
+const userList: User[] = [{
+    name: "A",
+    email: "user@example.com",
+}, 
+{
+    name: "b",
+    email: "use2@example.com",
+}]
+
+const userInfo = {
+    name: "c",
+    email: "c@gmail.com",
+    gender: "femail"
+}
+
+userList.push(userInfo)
