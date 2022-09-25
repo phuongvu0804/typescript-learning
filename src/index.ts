@@ -311,8 +311,27 @@ interface Adult {
     work: () => void
 }
 
-declare function getHuman(): Baby | Adult;
-let person1 = getHuman();
-person1.eat();
-person1.work();
+// declare function getHuman(): Baby | Adult;
+// let person1 = getHuman();
+// person1.eat();
+// person1.work();
 
+
+//Type Aliases
+type BookKeeping = {
+    soldUnit: number;
+    sellingPrice: number;
+    originalPrice: number;
+}
+
+function getProfit (input: BookKeeping): number {
+    return (input.sellingPrice - input.originalPrice) * input.soldUnit;
+}
+
+getProfit({originalPrice: 3, sellingPrice: 5, soldUnit: 10})
+
+function getRevenue (input: BookKeeping): number {
+    return input.sellingPrice * input.soldUnit;
+}
+
+getRevenue({originalPrice: 3, sellingPrice: 5, soldUnit: 10})
