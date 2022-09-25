@@ -110,7 +110,7 @@ const successMsg: NotiMsg = {
     onClick: () => alert(successMsg.content)
 }
 
-console.log(successMsg)
+// console.log(successMsg)
 
 //Optional properties
 interface User {
@@ -287,3 +287,32 @@ const house1: House = {
     area: "50m2",
     type: HouseType.Kaksio
 }
+
+function isWeekend (value: Date | string): boolean {
+    if (typeof value === "string") {
+        value = new Date(value)
+    }
+    
+    const day = value.getDay()
+    return day === 6 || day === 0
+}
+
+isWeekend(new Date())
+
+//Union types
+interface Baby {
+    eat: () => void;
+    sleep: () => void;
+}
+
+interface Adult {
+    eat: () => void;
+    sleep: () => void;
+    work: () => void
+}
+
+declare function getHuman(): Baby | Adult;
+let person1 = getHuman();
+person1.eat();
+person1.work();
+
