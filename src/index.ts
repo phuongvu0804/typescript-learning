@@ -192,4 +192,26 @@ class ContactApp {
 }
 
 const app = new ContactApp(myAdapter);
-app.render()
+// app.render()
+
+
+//Interface declaration merging
+interface Employee {
+    name: string;
+    age: number;
+    isNew: boolean;
+}
+
+interface Employee {
+    isValidRetirement: () => boolean;
+}
+
+const employee1: Employee = {
+    name: "A",
+    age: 55,
+    isNew: false,
+    isValidRetirement: function () {
+        if (age >= 55) return true;
+        return false;
+    }
+}
