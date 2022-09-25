@@ -215,3 +215,18 @@ const employee1: Employee = {
         return false;
     }
 }
+
+//Type inference
+function foo () {
+    let i: string;
+
+    if (Math.random() > 5) {
+        i = "5"
+    } else {
+        i = "0"
+    }
+
+    return i.toUpperCase();
+}
+
+console.log(foo())
